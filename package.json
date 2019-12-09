@@ -1,0 +1,35 @@
+{
+  "name": "bali",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint './**/*.js' --fix",
+    "pre-commit": "yarn lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "4.5.0",
+    "@rematch/core": "1.2.0",
+    "next": "9.1.1",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "react-redux": "7.1.1"
+  },
+  "devDependencies": {
+    "eslint": "6.5.1",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-node": "10.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.16.0",
+    "eslint-plugin-standard": "4.0.1",
+    "husky": "3.0.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  }
+}
