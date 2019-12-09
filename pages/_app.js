@@ -4,6 +4,7 @@ import App from 'next/app'
 import { Provider } from 'react-redux'
 
 import withRematch from '../src/rematch/withRematch'
+import { CONTAINER_MAX_WIDTH } from '../src/constants/DimensionConstants'
 
 class MyApp extends App {
   render () {
@@ -91,7 +92,7 @@ class MyApp extends App {
             <meta name='theme-color' content='#ffffff' />
             <link href='/css/base.min.css' rel='stylesheet' />
             <link
-              href='https://fonts.googleapis.com/css?family=Roboto&display=swap'
+              href='https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap'
               rel='stylesheet'
             />
           </Head>
@@ -107,7 +108,7 @@ class MyApp extends App {
             <div
               style={{
                 width: '100%',
-                maxWidth: 414,
+                maxWidth: CONTAINER_MAX_WIDTH,
                 backgroundColor: 'white',
                 overflowY: 'scroll',
                 padding: '5px 5px 0'

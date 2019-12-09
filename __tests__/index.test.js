@@ -38,7 +38,7 @@ describe('pages/index', () => {
       })
     )
 
-    const { getByText } = render(
+    const { getByText, getAllByText } = render(
       <Provider store={store}>
         <App />
       </Provider>
@@ -47,9 +47,9 @@ describe('pages/index', () => {
     await sleep(100)
 
     expect(getByText(/query test/i)).not.toBeNull()
-    expect(getByText(/3/i)).not.toBeNull()
-    expect(getByText(/5/i)).not.toBeNull()
+    expect(getAllByText(/3/i)).not.toBeNull()
+    expect(getAllByText(/5/i)).not.toBeNull()
     expect(getByText(/200/i)).not.toBeNull()
-    expect(getByText(/1/i)).not.toBeNull()
+    expect(getAllByText(/1/i)).not.toBeNull()
   })
 })
