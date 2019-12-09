@@ -90,8 +90,26 @@ class MyApp extends App {
             />
             <meta name='theme-color' content='#ffffff' />
             <link href='/css/base.min.css' rel='stylesheet' />
+            <link
+              href='https://fonts.googleapis.com/css?family=Roboto&display=swap'
+              rel='stylesheet'
+            />
           </Head>
-          <Component {...pageProps} />
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              backgroundColor: 'lightgray'
+            }}
+          >
+            <div
+              style={{ width: '100%', maxWidth: 414, backgroundColor: 'white', overflowY: 'scroll' }}
+            >
+              <Component {...pageProps} />
+            </div>
+          </div>
         </>
       </Provider>
     )

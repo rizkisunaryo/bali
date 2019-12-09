@@ -7,9 +7,9 @@ import App from '../pages/index.js'
 
 describe('With React Testing Library', () => {
   it('Shows "Hello world!"', () => {
-    const { getByText } = render(<App />)
+    const { getAllByText } = render(<App />)
 
-    expect(getByText('Hello World!')).not.toBeNull()
+    expect(getAllByText('Hello World!')[0]).not.toBeNull()
   })
 })
 
