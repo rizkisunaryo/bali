@@ -1,5 +1,5 @@
 import React from 'react'
 
-const Index = () => <>test</>
+const Index = () => <>Hello World!</>
 
 export default Index
