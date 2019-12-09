@@ -105,7 +105,13 @@ class MyApp extends App {
             }}
           >
             <div
-              style={{ width: '100%', maxWidth: 414, backgroundColor: 'white', overflowY: 'scroll' }}
+              style={{
+                width: '100%',
+                maxWidth: 414,
+                backgroundColor: 'white',
+                overflowY: 'scroll',
+                padding: '5px 5px 0'
+              }}
             >
               <Component {...pageProps} />
             </div>

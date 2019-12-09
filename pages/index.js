@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import ProductListMetadata from '../src/components/ProductListMetadata'
 
-const Index = () => <>
-  {Array(100).fill(null).map((_, i) => <div key={i}>Hello World!</div>)}
-</>
+const Index = props => {
+  useEffect(() => {
+    props.fetchProductsIfNeeded()
+  }, [])
 
-export default Index
+  return (
+    <ProductListMetadata
+      metadata={props.metadata}
+      count={props.products ? props.products.length : 0}
+    />
+  )
+}
+
+export default connect(
+  ({ metadata, products }) => ({ metadata, products }),
+  ({ products: { fetchProductsIfNeeded } }) => ({ fetchProductsIfNeeded })
+)(Index)

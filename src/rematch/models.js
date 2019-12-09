@@ -1,12 +1,26 @@
-export const dummy = {
-  state: [],
+import lodashget from '@rizkisunaryo/lodashget'
+
+export const metadata = {
+  state: null,
   reducers: {
-    pushDummy: (state, element) => [...state, element]
+    setMetadata: (_, payload) => payload
+  }
+}
+
+export const products = {
+  state: null,
+  reducers: {
+    setProducts: (_, payload) => payload
   },
   effects: dispatch => ({
-    pushDummyAsync: async (element, rootState) => {
-      if (rootState.dummy.indexOf(element) > -1) return
-      dispatch.dummy.pushDummy(element)
+    fetchProductsIfNeeded: async (_, rootState) => {
+      if (rootState.products && rootState.products.length > 0) return
+      const response = await fetch(
+        'http://catch-code-challenge.s3-website-ap-southeast-2.amazonaws.com/challenge-3/response.json'
+      ).then(resp => resp.json())
+
+      dispatch.products.setProducts(lodashget(response, 'results', []))
+      dispatch.metadata.setMetadata(lodashget(response, 'metadata', {}))
     }
   })
 }

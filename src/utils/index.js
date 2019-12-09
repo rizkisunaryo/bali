@@ -2,3 +2,6 @@
 export const checkServer = () => {
   return typeof window === 'undefined'
 }
+
+export const sleep = sleepTime =>
+  new Promise(resolve => setTimeout(resolve, sleepTime))
