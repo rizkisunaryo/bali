@@ -49,7 +49,8 @@ export const cart = {
     removeFromCart: (state, productId) => ({
       ...state,
       [productId]: undefined
-    })
+    }),
+    setCart: (_, newCart) => ({ ...newCart })
   },
   effects: dispatch => ({
     addToCartEffect: async (product = {}, rootState) => {
@@ -61,6 +62,16 @@ export const cart = {
         return
       }
       dispatch.cart.addToCart(product)
+    },
+    decreaseProductEffect: async (productId, rootState) => {
+      if (rootState.cart[productId].quantity <= 1) {
+        await dispatch.cart.removeFromCartEffect(productId)
+      } else dispatch.cart.decreaseProduct(productId)
+    },
+    removeFromCartEffect: async (productId, rootState) => {
+      const cart = rootState.cart
+      delete cart[productId]
+      dispatch.cart.setCart(cart)
     }
   })
 }

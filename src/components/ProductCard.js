@@ -82,6 +82,7 @@ const ProductCard = ({ data, isEven, addToCartEffect }) => {
 
       {showAddToCart && (
         <div
+          data-testid={`addToCartContainer-${data.id}`}
           onMouseOut={() => setShowAddToCart(false)}
           onClick={() => addToCartEffect(data)}
           style={{
