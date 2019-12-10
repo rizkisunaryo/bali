@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+
 import { getProductCardImageHeight } from '../utils/DimensionUtil'
 
-const ProductCard = ({ data, isEven }) => {
+const ProductCard = ({ data, isEven, addToCartEffect }) => {
+  const [showAddToCart, setShowAddToCart] = useState(false)
   return (
     <div
       data-testid={`productCardContainer-${data.id}`}
@@ -11,8 +14,10 @@ const ProductCard = ({ data, isEven }) => {
         marginLeft: isEven ? 0 : 5,
         border: '1px solid grey',
         borderRadius: 5,
-        marginBottom: 5
+        marginBottom: 5,
+        position: 'relative'
       }}
+      onMouseOver={() => data.quantityAvailable && setShowAddToCart(true)}
     >
       <div
         style={{
@@ -74,8 +79,42 @@ const ProductCard = ({ data, isEven }) => {
           </div>
         </div>
       </div>
+
+      {showAddToCart && (
+        <div
+          onMouseOut={() => setShowAddToCart(false)}
+          onClick={() => addToCartEffect(data)}
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            width: '100%',
+            height: '100%',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <div
+            style={{
+              width: 'calc(100% - 20px)',
+              padding: '10px 0',
+              borderRadius: 5,
+              backgroundColor: 'rgba(255, 255, 255, 0.5)',
+              textAlign: 'center'
+            }}
+          >
+            Add to Cart
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
-export default ProductCard
+export default connect(
+  null,
+  ({ cart: { addToCartEffect } }) => ({ addToCartEffect })
+)(ProductCard)

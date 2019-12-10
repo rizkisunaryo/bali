@@ -3,7 +3,7 @@ import React from 'react'
 const ProductListMetadata = ({ metadata, count = 0 }) => {
   if (!metadata) return null
   return (
-    <>
+    <div style={{ marginBottom: 5 }}>
       {metadata.query && (
         <div style={{ fontSize: 16 }}>
           Showing results for &quot;{metadata.query}&quot;
@@ -19,7 +19,7 @@ const ProductListMetadata = ({ metadata, count = 0 }) => {
           Showing {count} of {metadata.total}
         </div>
       )}
-    </>
+    </div>
   )
 }
 

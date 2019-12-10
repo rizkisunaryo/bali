@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 
 import withRematch from '../src/rematch/withRematch'
 import { CONTAINER_MAX_WIDTH } from '../src/constants/DimensionConstants'
+import CartModal from '../src/components/Modals/CartModal'
 
 class MyApp extends App {
   render () {
@@ -117,6 +118,7 @@ class MyApp extends App {
               <Component {...pageProps} />
             </div>
           </div>
+          <CartModal />
         </>
       </Provider>
     )
